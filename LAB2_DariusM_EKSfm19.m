@@ -17,4 +17,10 @@ for n=1:1:4
     b1(n) = randn;
     w2(n) = randn;
     b2(n) = randn;
+    h(n) = zeros(1, length(x)); %hidden layer
+    hOUT(n) = zeros(1, length(x));
 end
+
+OUT = zeros(1, length(x));
+e = zeros(1, length(x));
+    
