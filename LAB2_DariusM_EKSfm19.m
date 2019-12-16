@@ -10,3 +10,11 @@ plot(x,func,x,func);
 title('Etalonines funkcijos grafikas');
 xlabel('Iejimo vektoriaus pozicija'); 
 ylabel('f(x)');
+
+
+for n=1:1:4
+    w1(n) = randn;
+    b1(n) = randn;
+    w2(n) = randn;
+    b2(n) = randn;
+end
