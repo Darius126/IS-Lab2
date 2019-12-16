@@ -17,19 +17,19 @@ for n=1:4
     b1(n) = randn;
     w2(n) = randn;
     b2(n) = randn;
-    h(n,:) = zeros(1, length(x)); %pasl4ptas sluoksnis
+    h(n,:) = zeros(1, length(x)); %pasleptas sluoksnis
     hOUT(n,:) = zeros(1, length(x));
 end
 
 OUT = zeros(1, length(x));
 e = zeros(1, length(x));
-
+E = 0;
 
 %pirmas sluoksnis
 for n = 1:20
     for i = 1:4
         h(i,n) = x(n)*w1(i)+b1(i);
-        hOUT(i,n) = 1/(1+exp(-h(n))); %sigmoidin4 funkcija
+        hOUT(i,n) = 1/(1+exp(-h(n))); %sigmoidine funkcija
     end
 end
 
@@ -37,4 +37,7 @@ end
 for n = 1:20
     OUT(n) = hOUT(1,n)*w2(1) + hOUT(2,n)*w2(2) + hOUT(3,n)*w2(3) + hOUT(4,n)*w2(4);
     e(n) = func(n) - OUT(n);
+    E = E + (e(n)^2)/2;
 end
+
+
