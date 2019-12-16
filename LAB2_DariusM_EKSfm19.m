@@ -41,7 +41,7 @@ for n = 1:20
     E = E + abs(e(n));
 end
 
-l = 0.01; %mokymosi zingsnis
+l = 0.0005; %mokymosi zingsnis
 maxE = 0.1;
 
 while(E>maxE)
@@ -51,7 +51,7 @@ for n = 1:20
     %atnaujinamas antras sluoksnis
     for i = 1:4
         w2(i) = w2(i) + l*e(n)*hOUT(i);
-        b2(i) = b2(i) + l*e(n);
+        b2(1) = b2(1) + l*e(n);
     end
     
     %atnaujinamas pirmas sluoksnis
