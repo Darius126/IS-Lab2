@@ -29,7 +29,7 @@ e = zeros(1, length(x));
 for n = 1:20
     for i = 1:4
         h(i,n) = x(n)*w1(i)+b1(i);
-        hOUT(i,n) = 1/(1+exp(-h(n))); %sigmoidine funkcija
+        hOUT(i,n) = 1/(1+exp(-h(i,n))); %sigmoidine funkcija
     end
 end
 
@@ -38,11 +38,12 @@ E = 0;
 for n = 1:20
     OUT(n) = hOUT(1,n)*w2(1) + hOUT(2,n)*w2(2) + hOUT(3,n)*w2(3) + hOUT(4,n)*w2(4) + b2(1);
     e(n) = func(n) - OUT(n);
-    E = E + abs(e(n));
+    E = E + (e(n)^2)/2;
 end
 
-l = 0.0005; %mokymosi zingsnis
-maxE = 0.1;
+
+l = 0.02; %mokymosi zingsnis
+maxE = 0.01;
 
 while(E>maxE)
 
@@ -67,7 +68,7 @@ end
 for n = 1:20
     for i = 1:4
         h(i,n) = x(n)*w1(i)+b1(i);
-        hOUT(i,n) = 1/(1+exp(-h(n)));
+        hOUT(i,n) = 1/(1+exp(-h(i,n)));
     end
 end
 
@@ -76,7 +77,7 @@ E = 0;
 for n = 1:20
     OUT(n) = hOUT(1,n)*w2(1) + hOUT(2,n)*w2(2) + hOUT(3,n)*w2(3) + hOUT(4,n)*w2(4) + b2(1);
     e(n) = func(n) - OUT(n);
-    E = E + abs(e(n));
+    E = E + (e(n)^2)/2;
 end
 
 E
@@ -90,7 +91,6 @@ hold on
 plot(x,func,x,OUT);
 plot(x,func,x,OUT,'k');
 hold off
-title('Originalus signalas VS Neuron? tinklo signalas');
-legend('Originalus','Neuron? tinklo');
+title('Originalus signalas VS Neuronu tinklo signalas');
 
 
